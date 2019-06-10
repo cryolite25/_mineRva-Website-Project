@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed');
+
+.TestPanel {
+    background-color: white;
+    border: 1px #e6eaeb solid;
+    margin: 20px 0;
+    border-radius:4px;
+    padding: 0px 10px;
+    margin-top: 0px;
+}
+
+li {
+    margin: 1em 0;
+}
+
+.Header {
+    display:block;
+}
+
+/*--------------------------------------Lesson title*/
+.Title {
+    margin: 10px 0px;
+    text-transform:uppercase;
+    text-align:center;
+}
+
+/*-------------------------------------Content h3 title*/
+h3 {
+    font-weight:bold;
+}
+
+/*-------------------------------------Main content in list*/
+li.ContentList {
+    font-weight:300;
+}
+
+/*-------------------------------------Body styles*/
+body {
+    margin: 0px;
+    font-family: "Open Sans Condensed", sans-serif;
+    background-color: #f2f9ff;
+}
+
+/*-------------------------------------Percentage display number*/
+.ProgressPercentageStyle {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 1.5rem;
+    margin-bottom: 0px;
+    font-weight: 300;
+}
+
+/*-------------------------------------Back to lesson/home page*/
+.BackToMainButton {
+    position:fixed;
+    margin-left:20px;
+    margin-top:10px;
+}
+
+/*-------------------------------------Background of progress bar*/
+.ProgressBarBlock {
+    display:block;
+    margin:-30px 0px;
+    padding:0px;
+}
+
+.ProgressBarContainer {
+    height: 3px;
+    background-color: #184D8D;
+    border-width: 2px 0px;
+    position: relative;
+    top: 48px;
+}
+
+.ButtonLists {
+    display:block;
+    padding: 0px;
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+}
+
+.ProgressBar {
+    width: 38%;
+    height: 3px;
+    background: #00A6FF;
+}
+
+.SliderButtons {
+    display: inline-block;
+    position: relative;
+    background-color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 15px;
+    border: 2px solid #184D8D;
+    text-align: center;
+}
+
+.NextButton {
+    position: relative;
+    margin-bottom: 10px;
+    float: right;
+    border-radius: 5px;
+    height: 2rem;
+    width: 4rem;
+    background: #00A6FF;
+    font-family: "Open Sans Condensed", sans-serif;
+    font-weight: 300;
+    color: white;
+    font-size: 20px;
+    border-style: none;
+}
+
+button.NextButton:active {
+    background: #0091e0;
+}
+
+button.NextButton:focus {
+    outline:0px;
+}
