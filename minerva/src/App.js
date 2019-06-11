@@ -14,11 +14,7 @@ function App() {
 
   return (
       <div className="App">
-          <Navbar dark color="primary">
-              <div className="container">
-                  <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-              </div>
-          </Navbar>
+         
 
     <div className="Header">
         <div className="BackToMainButton">
