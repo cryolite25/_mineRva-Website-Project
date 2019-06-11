@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 .TestPanel {
     background-color: white;
@@ -19,7 +19,7 @@ li {
 
 /*--------------------------------------Lesson title*/
 .Title {
-    margin: 10px 0px;
+    margin-top: 15px;
     text-transform:uppercase;
     text-align:center;
 }
@@ -27,6 +27,9 @@ li {
 /*-------------------------------------Content h3 title*/
 h3 {
     font-weight:bold;
+    font-size: 25px;
+    margin-top: 15px;
+    margin-left: 5px;
 }
 
 /*-------------------------------------Main content in list*/
@@ -37,7 +40,7 @@ li.ContentList {
 /*-------------------------------------Body styles*/
 body {
     margin: 0px;
-    font-family: "Open Sans Condensed", sans-serif;
+    font-family: 'Roboto';
     background-color: #f2f9ff;
 }
 
@@ -60,7 +63,7 @@ body {
 /*-------------------------------------Background of progress bar*/
 .ProgressBarBlock {
     display:block;
-    margin:-30px 0px;
+    margin:-15px 0px;
     padding:0px;
 }
 
@@ -69,7 +72,7 @@ body {
     background-color: #184D8D;
     border-width: 2px 0px;
     position: relative;
-    top: 48px;
+    top: 30px;
 }
 
 .ButtonLists {
