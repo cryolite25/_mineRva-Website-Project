@@ -15,6 +15,7 @@ li {
 
 .Header {
     display:block;
+    
 }
 
 /*--------------------------------------Lesson title*/
@@ -27,14 +28,15 @@ li {
 /*-------------------------------------Content h3 title*/
 h3 {
     font-weight:bold;
-    font-size: 25px;
+    font-size: 23px;
     margin-top: 15px;
     margin-left: 5px;
 }
 
 /*-------------------------------------Main content in list*/
-li.ContentList {
+.ContentList {
     font-weight:300;
+    margin-left: 5px;
 }
 
 /*-------------------------------------Body styles*/
@@ -108,7 +110,7 @@ body {
     height: 2rem;
     width: 4rem;
     background: #00A6FF;
-    font-family: "Open Sans Condensed", sans-serif;
+    font-family: 'Roboto';
     font-weight: 300;
     color: white;
     font-size: 20px;
