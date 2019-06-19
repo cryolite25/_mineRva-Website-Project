@@ -2,84 +2,156 @@ import React, { Component } from 'react';
 import './CSS/main.css';
 import LessonPage from './Componenets/LessonPageComponent';
 import LessonOutline from './Componenets/LessonOutlineComponent';
-import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
-import { instanceOf } from 'prop-types';
-import { withCookies, Cookies } from 'react-cookie';
-import NameForm from './Componenets/NameForm';
-
-//Imprt react router dom, need to install
+import { Route, Redirect, BrowserRouter } from 'react-router-dom';
 
 class App extends Component {
-
-    static propTypes = {
-        cookies: instanceOf(Cookies).isRequired
-    };
-
     constructor(props) {
         super(props);
-
-        const { cookies } = props;
         this.state = {
-            valueState: " ",
-            name: cookies.get('name') || 'Ben'
+            newItem: "",
+            list: []
+        };
+    }
+
+    componentDidMount() {
+        this.hydrateStateWithLocalStorage();
+
+        // add event listener to save state to localStorage
+        // when user leaves/refreshes the page
+        window.addEventListener(
+            "beforeunload",
+            this.saveStateToLocalStorage.bind(this)
+        );
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener(
+            "beforeunload",
+            this.saveStateToLocalStorage.bind(this)
+        );
+
+        // saves if component has a chance to unmount
+        this.saveStateToLocalStorage();
+    }
+
+    hydrateStateWithLocalStorage() {
+        // for all items in state
+        for (let key in this.state) {
+            // if the key exists in localStorage
+            if (localStorage.hasOwnProperty(key)) {
+                // get the key's value from localStorage
+                let value = localStorage.getItem(key);
+
+                // parse the localStorage string and setState
+                try {
+                    value = JSON.parse(value);
+                    this.setState({ [key]: value });
+                } catch (e) {
+                    // handle empty string
+                    this.setState({ [key]: value });
+                }
+            }
+        }
+    }
+
+    saveStateToLocalStorage() {
+        // for every item in React state
+        for (let key in this.state) {
+            // save to localStorage
+            localStorage.setItem(key, JSON.stringify(this.state[key]));
+        }
+    }
+
+    updateInput(key, value) {
+        // update react state
+        this.setState({ [key]: value });
+    }
+
+    addItem() {
+        // create a new item with unique id
+        const newItem = {
+            id: 1 + Math.random(),
+            value: this.state.newItem.slice()
         };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // copy current list of items
+        const list = [...this.state.list];
+
+        // add the new item to the list
+        list.push(newItem);
+
+        // update state with new list, reset the new item input
+        this.setState({
+            list,
+            newItem: ""
+        });
     }
 
-    handleNameChange(name) {
-        console.log(name);
-        const { cookies } = this.props;
+    deleteItem(id) {
+        // copy current list of items
+        const list = [...this.state.list];
+        // filter out the item being deleted
+        const updatedList = list.filter(item => item.id !== id);
 
-        cookies.set('name', name, { path: '/' });
-        this.setState({ name });
-    }
-
-    handleChange(event) {
-        this.setState({ valueState: event.target.value });
-    }
-
-    handleSubmit(event) {
-        alert("Submit button clicked with value of: " + this.state.valueState);
-        event.preventDefault();
+        this.setState({ list: updatedList });
     }
 
     render() {
-
-        const { name } = this.state;
-
         return (
             <React.Fragment>
                 <BrowserRouter>
                     <div>
                         <Route path="/lessonOutline" component={LessonOutline}></Route>
                         <Route path="/syntax" component={LessonPage}></Route>
+                        <Route path="/variables" component={LessonPage}></Route>
                         <Redirect to="/lessonOutline"></Redirect>
                     </div>
                 </BrowserRouter>
-                {/* <div>
-                    <form onSubmit={this.handleSubmit}>
-                        <label>
-                            Name:
-                            <input type="text" nameVar={this.state.valueState} onChange={this.handleChange} ></input>
-                        </label>
-                        <input type="submit" value="Submit" />
 
-
-                    </form>
+                <div className="App">
+                    <header className="App-header">
+                        <h1 className="App-title">Welcome to React LocalStorage Tutorial</h1>
+                    </header>
+                    <div
+                        style={{
+                            padding: 50,
+                            textAlign: "left",
+                            maxWidth: 500,
+                            margin: "auto"
+                        }}
+                    >
+                        Add an item to the list
+          <br />
+                        <input
+                            type="text"
+                            placeholder="Type item here"
+                            value={this.state.newItem}
+                            onChange={e => this.updateInput("newItem", e.target.value)}
+                        />
+                        <button
+                            onClick={() => this.addItem()}
+                            disabled={!this.state.newItem.length}
+                        >
+                            &#43; Add
+          </button>
+                        <br /> <br />
+                        <ul>
+                            {this.state.list.map(item => {
+                                return (
+                                    <li key={item.id}>
+                                        {item.value}
+                                        <button onClick={() => this.deleteItem(item.id)}>
+                                            Remove
+                  </button>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
                 </div>
-        */}
-                <div>
-                    <NameForm name={name} onChange={this.handleNameChange.bind(this)} />
-                    {this.state.name && <h1>Hello {this.state.name}!</h1>}
-                </div>
-
             </React.Fragment>
-
-
         );
     }
 }
 
-export default withCookies(App);
+export default App;

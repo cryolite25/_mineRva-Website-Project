@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import '../CSS/main.css';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class LessonHeader extends Component {
 

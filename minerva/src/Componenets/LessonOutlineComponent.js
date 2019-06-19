@@ -6,14 +6,11 @@ import { NavLink } from 'react-router-dom'
 class LessonOutline extends Component {
 
 
-    TestFunc() {
-        alert("CLICK");
-    }
-
     render() {
         return (
             <div>
                 <NavLink to="/syntax"> syntax </NavLink>
+                <NavLink to="/variables"> variables </NavLink>
             </div>
         );
     }
