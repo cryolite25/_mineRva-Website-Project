@@ -2,17 +2,25 @@
 
 import React, { Component } from 'react';
 import '../CSS/main.css';
+import { NavLink, Link } from 'react-router-dom';
 
-function LessonHeader() {
-    return (
-        //Back to main button and lesson title here
-        <div className="Header">
-            <div className="BackToMainButton">
-                <button>BTM</button>
+class LessonHeader extends Component {
+
+    render() {
+        return (
+            //Back to main button and lesson title here
+            <div className="Header" >
+                <div className="BackToMainButton">
+                    <NavLink to="/lessonOutline">
+                        <button>BTM</button>
+                    </NavLink>
+
+                </div>
+                <h1 className="Title">Variables</h1>
             </div>
-            <h1 className="Title">Variables</h1>
-        </div>
-    );
+        );
+    }
+
 }
 
 export default LessonHeader;

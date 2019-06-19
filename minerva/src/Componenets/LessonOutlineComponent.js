@@ -1,18 +1,19 @@
 //Show the lesson route map page
 
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom'
 
 class LessonOutline extends Component {
+
+
+    TestFunc() {
+        alert("CLICK");
+    }
 
     render() {
         return (
             <div>
-                <ul>
-                    <li> SYNTAX </li>
-                    <li> VARIABLES </li>
-                    <li> ARITHMETIC OPERATORS </li>
-                    <li> DATA TYPES </li>
-                </ul>
+                <NavLink to="/syntax"> syntax </NavLink>
             </div>
         );
     }
